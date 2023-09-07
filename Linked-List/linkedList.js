@@ -1,26 +1,24 @@
 class LinkedList {
-  // constructor(length) {
-  //   this.length = length;
-  // }
-  length = 0; // 위와 동일한 의미
+  length = 0;
   head = null;
 
   add(value) {
     if (this.head) {
-      console.log("head 값 : ", this.head);
       let current = this.head;
       while (current.next) {
         current = current.next;
       }
       current.next = new Node(value);
     } else {
-      console.log("else 값 : ", this.head);
-      this.head - new Node(value);
+      this.head = new Node(value); 
     }
     this.length++;
     return this.length;
   }
   search(index) {
+    return this.#search(index)[1]?.value;
+  }
+  #search(index) {
     let count = 0;
     let prev;
     let current = this.head;
@@ -29,23 +27,26 @@ class LinkedList {
       current = current?.next;
       count++;
     }
-    return current?.value;
+    return [prev, current];
   }
   remove(index) {
-    let count = 0;
-    let prev;
-    let current = this.head;
-    while (count < index) {
-      prev = current;
-      current = current?.next;
-      current++;
+    const [prev, current] = this.#search(index);
+    if (prev && current) {
+      prev.next = current.next;
+      this.length--;
+      return this.length;
+    } else if (current) {
+      // index가 0일 때
+      this.head = current.next;
+      this.length--;
+      return this.length;
     }
-    return current?.value;
+    // 삭제하고자 하는 대상이 없을 때
+    // 아무것도 안 함
   }
 }
 class Node {
   next = null;
-  // 외부에서 전달 받는 값은 constructor를 사용해야 함
   constructor(value) {
     this.value = value;
   }
@@ -53,15 +54,19 @@ class Node {
 
 const ll = new LinkedList();
 ll.length;
-ll.add(1);
-ll.add(2);
-ll.add(3);
-ll.add(4);
-ll.add(5);
-ll.add(6);
-console.log(ll.add(6));
-console.log(console.log("head 값 : ", this.head));
-// ll.search(7); // null
-// ll.remove(4);
-// ll.search(4); // null
-console.log(ll.search(1));
+ll.add(1); // 1
+ll.add(2); // 2
+ll.add(3); // 3
+ll.add(4); // 4
+ll.add(5); // 5
+ll.add(6); // 6
+console.log(ll)
+ll.search(6); // undefined
+console.log(ll.search(6))
+ll.remove(4);
+console.log(ll)
+ll.search(4); // 6;
+console.log(ll.search(4))
+ll.remove(4);
+ll.search(4); // undefined
+ll.remove(4); // undefined
