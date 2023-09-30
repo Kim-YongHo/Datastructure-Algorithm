@@ -10,14 +10,15 @@ class LinkedList {
       }
       current.next = new Node(value);
     } else {
-      this.head = new Node(value); 
+      this.head = new Node(value);
     }
     this.length++;
     return this.length;
   }
   search(index) {
-    return this.#search(index)[1]?.value;
+    return this.#search(index)[1]?.value; // ?. : 옵셔널 체이닝 값이 없은면 undefined 반환
   }
+
   #search(index) {
     let count = 0;
     let prev;
@@ -29,6 +30,7 @@ class LinkedList {
     }
     return [prev, current];
   }
+
   remove(index) {
     const [prev, current] = this.#search(index);
     if (prev && current) {
@@ -36,15 +38,14 @@ class LinkedList {
       this.length--;
       return this.length;
     } else if (current) {
-      // index가 0일 때
-      this.head = current.next;
-      this.length--;
-      return this.length;
+      // index가 0일때
+      this.head = current.next
+      this.length--
+      return this.length
     }
-    // 삭제하고자 하는 대상이 없을 때
-    // 아무것도 안 함
   }
 }
+
 class Node {
   next = null;
   constructor(value) {
@@ -52,21 +53,31 @@ class Node {
   }
 }
 
+let test = new Node(892);
+console.log(test);
+console.log(test.next);
+console.log(test.value);
+
 const ll = new LinkedList();
 ll.length;
-ll.add(1); // 1
-ll.add(2); // 2
-ll.add(3); // 3
-ll.add(4); // 4
-ll.add(5); // 5
-ll.add(6); // 6
-console.log(ll)
-ll.search(6); // undefined
-console.log(ll.search(6))
+ll.add(1); //1
+ll.add(2); //2
+ll.add(3); //3
+ll.add(4); //4
+ll.add(5); //5
+ll.add(6); //6
+console.log(ll.search(6)) // undefined
 ll.remove(4);
-console.log(ll)
-ll.search(4); // 6;
-console.log(ll.search(4))
+console.log(ll.search(4)) // 6
 ll.remove(4);
-ll.search(4); // undefined
-ll.remove(4); // undefined
+console.log(ll.search(4)) // undefined
+console.log(ll.search(4)) // undefined
+// console.log(ll.search(3))
+// console.log(ll.search(5))
+// console.log(ll.search(7))
+
+// ll.search(4);
+// ll.search(7); // null
+// ll.remove(4);
+// ll.search(4); //null
+console.log('end')
