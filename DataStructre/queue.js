@@ -1,4 +1,4 @@
-class Queue {
+export class Queue {
   arr = [];
 
   enqueue(value) {
@@ -18,12 +18,12 @@ class Queue {
   }
 }
 
-const queue = new Queue();
-queue.enqueue(1);
-queue.enqueue(3);
-queue.enqueue(5);
-queue.enqueue(2);
-queue.enqueue(4);
-console.log(queue.length); // 5
-queue.dequeue();
-console.log(queue.peek()); // 2
+// const queue = new Queue();
+// queue.enqueue(1);
+// queue.enqueue(3);
+// queue.enqueue(5);
+// queue.enqueue(2);
+// queue.enqueue(4);
+// console.log(queue.length); // 5
+// queue.dequeue();
+// console.log(queue.peek()); // 2

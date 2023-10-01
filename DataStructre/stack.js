@@ -1,4 +1,4 @@
-class Stack {
+export class Stack {
   arr = [];
 
   push(value) {
@@ -18,13 +18,13 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-stack.push(1);
-stack.push(3);
-stack.push(5);
-stack.push(2);
-stack.push(4);
-console.log(stack.length); // 5
-stack.pop()
-console.log(stack.top()) // 2
+// const stack = new Stack();
+// stack.push(1);
+// stack.push(3);
+// stack.push(5);
+// stack.push(2);
+// stack.push(4);
+// console.log(stack.length); // 5
+// stack.pop()
+// console.log(stack.top()) // 2
 

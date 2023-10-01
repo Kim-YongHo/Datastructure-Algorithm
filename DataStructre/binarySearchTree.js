@@ -1,4 +1,4 @@
-class BinarySearchTree {
+export class BinarySearchTree {
   root = null;
 
   #insert(node, value) {
